@@ -1,4 +1,17 @@
+import {useState, useEffect} from 'react'  
+
 const Form = () => {
+  // State de los campos del form
+  const [name, setName] = useState('')
+  const [owner, setOwner] = useState('')
+  const [email, setEmail] = useState('')
+  const [date, setDate] = useState('')
+  const [symptoms, setSymptoms] = useState('')
+
+  const handleSubmit = e => {
+    e.preventDefault()
+  }
+
   return (
     <div className="mx-3 md:w-1/2 lg:w-2/5">
       <h2 className="font-black text-3xl text-center">Seguimiento pacientes</h2>
@@ -9,7 +22,7 @@ const Form = () => {
       </p>
 
       {/* FORMULARIO REGISTRO PACIENTES */}
-      <form className="bg-white shadow-md rounded-lg py-10 px-5 mb-10">
+      <form onSubmit={handleSubmit} className="bg-white shadow-md rounded-lg py-10 px-5 mb-10">
         {/* NOMBRE MASCOTA */}
         <div className="mb-5">
           <label 
@@ -23,6 +36,8 @@ const Form = () => {
             className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
             type="text"
             placeholder="Nombre de la Mascota"
+            value={name}
+            onChange={e => setName(e.target.value)}
           />
         </div>
 
@@ -39,6 +54,8 @@ const Form = () => {
             className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
             type="text"
             placeholder="Nombre del Propietario"
+            value={owner}
+            onChange={e => setOwner(e.target.value)}
           />
         </div>
 
@@ -55,6 +72,8 @@ const Form = () => {
             className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
             type="email"
             placeholder="Email de Contacto"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
           />
         </div>
 
@@ -70,6 +89,8 @@ const Form = () => {
             id="date"
             className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
             type="date"
+            value={date}
+            onChange={e => setDate(e.target.value)}
           />
         </div>
 
@@ -86,6 +107,8 @@ const Form = () => {
             id="symptoms"
             className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
             placeholder="Describe los síntomas"
+            value={symptoms}
+            onChange={e => setSymptoms(e.target.value)}
           />
         </div>
 
