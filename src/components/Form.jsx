@@ -8,8 +8,18 @@ const Form = () => {
   const [date, setDate] = useState('')
   const [symptoms, setSymptoms] = useState('')
 
+  // Si hay un error en los campos del form
+  const [error, setError] = useState(false)
+
   const handleSubmit = e => {
     e.preventDefault()
+
+    // Validar form
+    if ([name, owner, email, date, symptoms].includes('')) {
+      setError(true)
+    } else {
+      setError(false)
+    }
   }
 
   return (
@@ -23,6 +33,13 @@ const Form = () => {
 
       {/* FORMULARIO REGISTRO PACIENTES */}
       <form onSubmit={handleSubmit} className="bg-white shadow-md rounded-lg py-10 px-5 mb-10">
+        {/* MENSAJE DE ERROR */}
+        {error && 
+          <div className='bg-red-800 text-white text-center p-3 uppercase font-bold mb-3 rounded-md'>
+            <p>Todos los campos son obligatorios</p>
+          </div>
+        }
+
         {/* NOMBRE MASCOTA */}
         <div className="mb-5">
           <label 
